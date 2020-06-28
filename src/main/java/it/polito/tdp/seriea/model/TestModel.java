@@ -5,7 +5,9 @@ public class TestModel {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Model m = new Model();
+		Model model = new Model();
+		System.out.println(model.creaGrafo());
+		System.out.println(model.connessioni("Milan"));
 	}
 
 }

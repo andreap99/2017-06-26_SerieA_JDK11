@@ -1,12 +1,16 @@
 package it.polito.tdp.seriea.model;
 
-public class Team {
+public class Team implements Comparable<Team>{
 
 	private String team;
+	private int numPunti;
+	private int numTifosi;
 
-	public Team(String team) {
+	public Team(String team, int n) {
 		super();
 		this.team = team;
+		this.numTifosi = n;
+		this.numPunti = 0;
 	}
 
 	/**
@@ -67,6 +71,27 @@ public class Team {
 		} else if (!team.equals(other.team))
 			return false;
 		return true;
+	}
+
+	public int getNumPunti() {
+		return numPunti;
+	}
+
+	public void setPunti(int numPunti) {
+		this.numPunti += numPunti;
+	}
+
+	public int getNumTifosi() {
+		return numTifosi;
+	}
+
+	public void setNumTifosi(int numTifosi) {
+		this.numTifosi += numTifosi;
+	}
+
+	@Override
+	public int compareTo(Team other) {
+		return -(this.numPunti-other.numPunti);
 	}
 
 }

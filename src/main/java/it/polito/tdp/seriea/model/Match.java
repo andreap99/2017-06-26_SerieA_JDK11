@@ -2,14 +2,14 @@ package it.polito.tdp.seriea.model;
 
 import java.time.LocalDate;
 
-public class Match {
+public class Match implements Comparable<Match>{
 
 	private int id;
 	private Season season;
 	private String div;
 	private LocalDate date;
-	private Team homeTeam;
-	private Team awayTeam;
+	private String homeTeam;
+	private String awayTeam;
 	private int fthg; // full time home goals
 	private int ftag; // full time away goals
 	private String ftr; // full time result (H, A, D)
@@ -28,7 +28,7 @@ public class Match {
 	 * @param ftag
 	 * @param ftr
 	 */
-	public Match(int id, Season season, String div, LocalDate date, Team homeTeam, Team awayTeam, int fthg, int ftag, String ftr) {
+	public Match(int id, Season season, String div, LocalDate date, String homeTeam, String awayTeam, int fthg, int ftag, String ftr) {
 		super();
 		this.id = id;
 		this.season = season;
@@ -72,14 +72,14 @@ public class Match {
 	/**
 	 * @return the homeTeam
 	 */
-	public Team getHomeTeam() {
+	public String getHomeTeam() {
 		return homeTeam;
 	}
 
 	/**
 	 * @return the awayTeam
 	 */
-	public Team getAwayTeam() {
+	public String getAwayTeam() {
 		return awayTeam;
 	}
 
@@ -140,7 +140,7 @@ public class Match {
 	 * @param homeTeam
 	 * the homeTeam to set
 	 */
-	public void setHomeTeam(Team homeTeam) {
+	public void setHomeTeam(String homeTeam) {
 		this.homeTeam = homeTeam;
 	}
 
@@ -148,7 +148,7 @@ public class Match {
 	 * @param awayTeam
 	 * the awayTeam to set
 	 */
-	public void setAwayTeam(Team awayTeam) {
+	public void setAwayTeam(String awayTeam) {
 		this.awayTeam = awayTeam;
 	}
 
@@ -206,6 +206,11 @@ public class Match {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Match other) {
+		return this.date.compareTo(other.date);
 	}
 
 }
